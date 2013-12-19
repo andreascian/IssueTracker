@@ -120,7 +120,8 @@ class IssueTrackerActionAdd extends IssueTrackerAction
 		/** @see SpecialListusers **/
 		require_once( $IP."/includes/specials/SpecialListusers.php" );
 		
-		$users = new UsersPager($group);
+		$specialListUsers = new SpecialListUsers();
+		$users = new UsersPager($specialListUsers->getContext());
 		if (! $users->mQueryDone) {
 			$users->doQuery();
 		}
@@ -137,3 +138,4 @@ class IssueTrackerActionAdd extends IssueTrackerAction
 	}
 }
 ?>
+
